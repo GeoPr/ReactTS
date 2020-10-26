@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import { appReducer, app_IS } from './reducers/appReducer';
 
-const Context = createContext();
+const Context = createContext<Partial<{}>>({});
 
-export const StateProvider = ({ children }) => {
+export const StateProvider: React.FC = ({ children }) => {
   const value = {
     reducers: {
       app: useReducer(appReducer, app_IS),
