@@ -1,7 +1,7 @@
 import { app_TEST_CASE } from '../types';
 
-type app_IST = {};
-export const app_IS: app_IST[] = [];
+export type app_TYPE = [{ id: string | number }];
+export const app_IS = [];
 
 export const appReducer = (state: any, action: any) => {
   switch (action.type) {

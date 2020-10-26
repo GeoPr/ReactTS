@@ -1,14 +1,16 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import { appReducer, app_IS } from './reducers/appReducer';
 
-const Context = createContext<Partial<{}>>({});
+interface IContextProps {
+  // ...
+}
+
+const Context = createContext({} as IContextProps);
 
 export const StateProvider: React.FC = ({ children }) => {
-  const value = {
-    reducers: {
-      app: useReducer(appReducer, app_IS),
-    },
-  };
+  const [state, dispatch] = useReducer(appReducer, app_IS);
+
+  const value = { state, dispatch };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
 };
