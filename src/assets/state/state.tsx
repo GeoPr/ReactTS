@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useReducer } from 'react';
-import { appReducer, app_IS } from './reducers/appReducer';
+import { appReducer, app_IS, app_TYPE } from './reducers/appReducer';
 
 interface IContextProps {
-  state: any;
+  state: Array<app_TYPE>;
   dispatch: ({ type, payload }: { type: string; payload: object }) => void;
 }
 
