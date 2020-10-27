@@ -2,7 +2,8 @@ import React, { createContext, useContext, useReducer } from 'react';
 import { appReducer, app_IS } from './reducers/appReducer';
 
 interface IContextProps {
-  // ...
+  state: any;
+  dispatch: ({ type, payload }: { type: string; payload: object }) => void;
 }
 
 const Context = createContext({} as IContextProps);
