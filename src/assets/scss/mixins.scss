@@ -21,3 +21,30 @@
 }
 // ADAPTIVE FONT \\
 // ================================================================================================================================================================================================================================================================================================================================
+// ADAPTIVE PROPERTY \\
+@mixin adaptiveProperty($property, $pcSize, $mobSize, $type) {
+  $addSize: $pcSize - $mobSize;
+  @if $type == 'max' {
+    #{$property}: $pcSize + px;
+    @media (max-width: #{$maxWidthContainer + 30px}) {
+      #{$property}: calc(
+        #{$mobSize + px} + #{$addSize} *
+          ((100vw - $minWidthBody + px) / #{$maxWidthContainer - $minWidthBody})
+      );
+    }
+  } @else if $type == 'min' {
+    #{$property}: $pcSize + px;
+    @media (min-width: $maxWidthContainer - 30px) {
+      #{$property}: calc(
+        #{$mobSize + px} + #{$addSize} *
+          ((100vw - $minWidthBody) / #{$maxWidthLayout - $minWidthBody})
+      );
+    }
+  } @else {
+    #{$property}: calc(
+      #{$mobSize + px} + #{$addSize} * ((100vw - $minWidthBody) / #{$maxWidthLayout - $minWidthBody})
+    );
+  }
+}
+// ADAPTIVE PROPERTY \\
+// ================================================================================================================================================================================================================================================================================================================================
